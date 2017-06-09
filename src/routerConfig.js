@@ -4,5 +4,7 @@ import ChatScreen from './container/Chat.js';
 
 export const AppNavigator = StackNavigator({
   Home: { screen: HomeScreen },
-  Chat: { screen: ChatScreen },
+  Chat: { 
+    screen: ChatScreen
+  },
 });

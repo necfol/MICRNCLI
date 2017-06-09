@@ -14,7 +14,7 @@ export default class HomeScreen extends React.Component {
       <View>
         <Text>Hello, MIC App!</Text>
         <Button
-          onPress={() => navigate('Chat')}
+          onPress={() => navigate('Chat', { user: 'Necfol' })}
           title="Chat with Necfol"
         />
       </View>

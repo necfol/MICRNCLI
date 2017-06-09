@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   AppRegistry,
 } from 'react-native';
@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 import AppWithNav from './root.js';
 import confStore from './configStore.js';
 const store = confStore();
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
