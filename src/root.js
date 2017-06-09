@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers } from 'react-navigation';
 import { AppNavigator } from './routerConfig.js';
-class AppWithNavigationState extends Component {
+@connect(state => ({
+  nav: state.nav
+}), dispatch => ({dispatch}))
+export default class AppWithNavigationState extends Component {
   render() {
     var { dispatch, nav } = this.props;
     return (
@@ -11,10 +14,3 @@ class AppWithNavigationState extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  nav: state.nav,
-});
-const mapDispatchToProps = dispatch => ({
-  dispatch
-})
-export default connect(mapStateToProps, mapDispatchToProps)(AppWithNavigationState);
