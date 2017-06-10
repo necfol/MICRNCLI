@@ -6,5 +6,5 @@ export const AppNavigator = StackNavigator({
   Home: { screen: HomeScreen },
   Chat: { 
     screen: ChatScreen
-  },
+  }
 });
