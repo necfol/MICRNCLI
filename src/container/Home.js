@@ -12,6 +12,7 @@ import {
 import { Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import SearchBar from 'react-native-search-bar';
+import MySwiper from '../component/MySwiper.js';
 import MyStatusBar from '../component/MyStatusBar.js'
 const styles = StyleSheet.create({
   container: {
@@ -51,7 +52,7 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showsCancelButtonFlag:false
+      showsCancelButtonFlag: false
     };
   }
   componentDidMount() {
@@ -96,6 +97,7 @@ export default class HomeScreen extends React.Component {
             onFocus={() => this._onFocus()}
             showsCancelButton={this.state.showsCancelButtonFlag}
             />
+          <MySwiper></MySwiper>
           <Button
             onPress={() => navigate('Chat', { user: 'Necfol' })}
             icon={{name: 'home', size: 32}}
