@@ -14,8 +14,6 @@ import MyStatusBar from '../component/MyStatusBar.js'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
     backgroundColor: '#f6f6f6'
   },
   logoView: {
@@ -23,11 +21,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     height: 44,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingLeft: 15,
+    paddingBottom: 5,
+    paddingRight: 15,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#e8e8e8'
   },
   logo: {
     height: 44,
-    width: 240,
+    width: 220,
   },
   scan: {
     height: 30,
@@ -70,13 +73,15 @@ export default class HomeScreen extends React.Component {
             />
           </TouchableHighlight>
         </View>
-        <Text>Hello, MIC App!</Text>
-        <Button
-          onPress={() => navigate('Chat', { user: 'Necfol' })}
-          icon={{name: 'home', size: 32}}
-          buttonStyle={{backgroundColor: 'red', borderRadius: 10}}
-          textStyle={{textAlign: 'center'}}
-          title='MIC' />
+        <ScrollView>
+          <Text>Hello, MIC App!</Text>
+          <Button
+            onPress={() => navigate('Chat', { user: 'Necfol' })}
+            icon={{name: 'home', size: 32}}
+            buttonStyle={{backgroundColor: 'red', borderRadius: 10}}
+            textStyle={{textAlign: 'center'}}
+            title='MIC' />
+        </ScrollView>
       </View>
     );
   }
