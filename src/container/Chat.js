@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 export default class ChatScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = this.props.navigation.state;
+    this.user = this.props.user;
   }
   static navigationOptions = ({navigation}) => {
       return ({
@@ -18,7 +18,7 @@ export default class ChatScreen extends Component {
   render() {
     return (
       <View>
-        <Text>Hello {this.state.params.user}</Text>
+        <Text>Hello {this.props.user}</Text>
       </View>
     );
   }

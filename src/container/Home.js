@@ -9,6 +9,7 @@ import {
   View
 } from 'react-native';
 import { Button } from 'react-native-elements';
+import { NavigationActions } from 'react-navigation'
 import MyStatusBar from '../component/MyStatusBar.js'
 const styles = StyleSheet.create({
   container: {
@@ -40,8 +41,15 @@ export default class HomeScreen extends React.Component {
       title: '首页',
     };
   };
+  constructor(props) {
+    super(props);
+  }
   _onPressScan() {
-    alert(1)
+      const navigateAction = NavigationActions.navigate({
+        routeName: 'Scan',
+        params: {}
+      })
+      this.props.navigation.dispatch(navigateAction)
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -54,7 +62,7 @@ export default class HomeScreen extends React.Component {
             resizeMode="stretch"
             source={require('../assert/img/logo.png')}
           />
-          <TouchableHighlight onPress={this._onPressScan} activeOpacity={1} underlayColor="#f3f3f3">
+          <TouchableHighlight onPress={() => this._onPressScan()} activeOpacity={1} underlayColor="#f3f3f3">
             <Image
               style={styles.scan}
               resizeMode="contain"
