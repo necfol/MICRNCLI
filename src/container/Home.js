@@ -6,6 +6,7 @@ import {
   ScrollView,
   TouchableHighlight,
   Image,
+  Dimensions,
   View
 } from 'react-native';
 import { Button } from 'react-native-elements';
@@ -38,6 +39,8 @@ const styles = StyleSheet.create({
     width: 30
   }
 })
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({navigation}) => {
     return {
@@ -93,7 +96,6 @@ export default class HomeScreen extends React.Component {
             onFocus={() => this._onFocus()}
             showsCancelButton={this.state.showsCancelButtonFlag}
             />
-          <Text>Hello, MIC App!</Text>
           <Button
             onPress={() => navigate('Chat', { user: 'Necfol' })}
             icon={{name: 'home', size: 32}}
