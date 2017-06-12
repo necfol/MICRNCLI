@@ -9,7 +9,8 @@ import {
   View
 } from 'react-native';
 import { Button } from 'react-native-elements';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
+import SearchBar from 'react-native-search-bar';
 import MyStatusBar from '../component/MyStatusBar.js'
 const styles = StyleSheet.create({
   container: {
@@ -46,6 +47,16 @@ export default class HomeScreen extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.state = {
+      showsCancelButtonFlag:false
+    };
+  }
+  componentDidMount() {
+    // this.refs.searchBar.focus();
+    // this.setState({showsCancelButtonFlag: true});
+  }
+  _onFocus() {
+    this.setState({showsCancelButtonFlag: true});
   }
   _onPressScan() {
       const navigateAction = NavigationActions.navigate({
@@ -56,6 +67,7 @@ export default class HomeScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation;
+    console.log(this.state.showsCancelButtonFlag)
     return (
       <View style={styles.container}>
         <MyStatusBar backgroundColor="#f6f6f6"/>
@@ -74,6 +86,13 @@ export default class HomeScreen extends React.Component {
           </TouchableHighlight>
         </View>
         <ScrollView>
+          <SearchBar
+            ref='searchBar'
+            placeholder='Search Products'
+            searchBarStyle="prominent"
+            onFocus={() => this._onFocus()}
+            showsCancelButton={this.state.showsCancelButtonFlag}
+            />
           <Text>Hello, MIC App!</Text>
           <Button
             onPress={() => navigate('Chat', { user: 'Necfol' })}
