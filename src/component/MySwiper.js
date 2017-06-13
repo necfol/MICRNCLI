@@ -8,6 +8,7 @@ import {
 import Swiper from 'react-native-swiper';
 const { width } = Dimensions.get('window');
 const SCREEN_HEIGHT = Dimensions.get('window').height;
+const loading = require('../assert/img/loading.gif');
 const styles = StyleSheet.create({
   wrapper: {
   },
@@ -32,21 +33,23 @@ const styles = StyleSheet.create({
     bottom: 0,
     backgroundColor: 'rgba(0,0,0,.5)'
   },
-
   loadingImage: {
     width: 60,
     height: 60
+  },
+  dot: {
+    marginBottom: 0
   }
 })
 const Slide = props => {
   return (
     <View style={styles.slide}>
-        <Image onLoad={() => props.loadHandle(props.i)} style={styles.image} source={{uri: props.uri}} />
-        {/*{
+        <Image onLoad={() => props.loadHandle(props.i)} style={styles.image} source={props.uri} />
+        {
         !props.loaded && <View style={styles.loadingView}>
-            <Image style={styles.loadingImage} />
+            <Image style={styles.loadingImage} source={loading}/>
         </View>
-        }*/}
+        }
     </View>
   )
 }
@@ -55,11 +58,10 @@ export default class MySwiper extends Component {
     super(props);
     this.state = {
       imgList: [
-        'https://pic.made-in-china.com/8f4j00DBvtbdgqbLVp/made-in-china.jpg',
-        'https://pic.made-in-china.com/8f4j00meZTquBkkDVN/made-in-china.jpg',
-        'https://pic.made-in-china.com/8f4j00bCZaKpVMrDWn/made-in-china.jpg',
+        require('../assert/img/online.jpg'),
+        require('../assert/img/wood.jpg'),
       ],
-      loadQueue: [0, 0, 0]
+      loadQueue: [0, 0]
     };
   }
   loadHandle (i) {
@@ -70,12 +72,13 @@ export default class MySwiper extends Component {
     })
   }
   render() {
+    console.log(this.state.loadQueue)
     return (
       <View>
-          <Swiper loadMinimal loadMinimalSize={1} style={styles.wrapper} height={160} loop={false}>
+          <Swiper loadMinimal loadMinimalSize={1} activeDotColor="#f6f6f6" style={styles.wrapper} height={160} loop={true}>
             {
               this.state.imgList.map((item, i) => <Slide
-                loadHandle={() => this.loadHandle()}
+                loadHandle={() => this.loadHandle(i)}
                 loaded={!!this.state.loadQueue[i]}
                 uri={item}
                 i={i}
