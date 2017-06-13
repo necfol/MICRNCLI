@@ -72,7 +72,6 @@ export default class MySwiper extends Component {
     })
   }
   render() {
-    console.log(this.state.loadQueue)
     return (
       <View>
           <Swiper loadMinimal loadMinimalSize={1} activeDotColor="#f6f6f6" style={styles.wrapper} height={160} loop={true}>
