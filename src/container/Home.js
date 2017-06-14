@@ -71,7 +71,6 @@ export default class HomeScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation;
-    console.log(this.state.showsCancelButtonFlag)
     return (
       <View style={styles.container}>
         <MyStatusBar backgroundColor="#f6f6f6"/>
