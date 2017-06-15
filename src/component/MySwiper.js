@@ -6,6 +6,7 @@ import {
   View
 } from 'react-native';
 import Swiper from 'react-native-swiper';
+import axios from 'axios';
 const { width } = Dimensions.get('window');
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const loading = require('../assert/img/loading.gif');
@@ -63,6 +64,29 @@ export default class MySwiper extends Component {
       ],
       loadQueue: [0, 0]
     };
+  }
+  componentDidMount() {
+    axios.get('http://127.0.0.1:3838/v8/fcg-bin/fcg_first_yqq.fcg', {
+      params: {
+        tpl:'v12',
+        page:'other',
+        rnd:0,
+        g_tk:new Date().getTime(),
+        loginUin:0,
+        hostUin:0,
+        inCharset:'utf8',
+        outCharset:'GB2312',
+        notice:0,
+        platform:'yqq',
+        needNewCode:0
+      }
+    })
+    .then(function (response) {
+      console.log(response.data.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
   loadHandle (i) {
     let loadQueue = this.state.loadQueue
