@@ -55,11 +55,6 @@ export default class HomeScreen extends React.Component {
             showsCancelButton={this.state.showsCancelButtonFlag}
             />
           <MySwiper></MySwiper>
-          <Button
-            icon={{name: 'home', size: 32}}
-            buttonStyle={{backgroundColor: 'red', borderRadius: 10}}
-            textStyle={{textAlign: 'center'}}
-            title='MIC' />
         </ScrollView>
       </View>
     );
