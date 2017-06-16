@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 const Slide = props => {
   return (
     <View style={styles.slide}>
-        <Image onLoad={() => props.loadHandle(props.i)} style={styles.image} source={props.uri} />
+        <Image onLoad={() => props.loadHandle(props.i)} style={styles.image} resizeMode="contain" source={{uri: props.uri}} />
         {
         !props.loaded && <View style={styles.loadingView}>
             <Image style={styles.loadingImage} source={loading}/>
@@ -58,14 +58,12 @@ export default class MySwiper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgList: [
-        require('../assert/img/online.jpg'),
-        require('../assert/img/wood.jpg'),
-      ],
-      loadQueue: [0, 0]
+      imgList: [],
+      loadQueue: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     };
   }
   componentDidMount() {
+    var _self = this;
     axios.get('http://127.0.0.1:3838/v8/fcg-bin/fcg_first_yqq.fcg', {
       params: {
         tpl:'v12',
@@ -82,11 +80,22 @@ export default class MySwiper extends Component {
       }
     })
     .then(function (response) {
-      console.log(response.data.data);
+      var MusicJsonCallback = (val) => {
+        _self.setState({
+          imgList: _self.fixHttp(val.data.focus)
+        })
+      }
+      eval(response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
+  }
+  fixHttp(arr) {
+    arr.map((item) => {
+      item.pic = item.pic.replace(/http/i, 'https');
+    })
+    return arr
   }
   loadHandle (i) {
     let loadQueue = this.state.loadQueue
@@ -103,7 +112,7 @@ export default class MySwiper extends Component {
               this.state.imgList.map((item, i) => <Slide
                 loadHandle={() => this.loadHandle(i)}
                 loaded={!!this.state.loadQueue[i]}
-                uri={item}
+                uri={item.pic}
                 i={i}
                 key={i} />)
             }

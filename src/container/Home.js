@@ -49,7 +49,7 @@ export default class HomeScreen extends React.Component {
         <ScrollView>
           <SearchBar
             ref='searchBar'
-            placeholder='Search Products'
+            placeholder='搜索 歌曲/专辑/歌手'
             searchBarStyle="prominent"
             onFocus={() => this._onFocus()}
             showsCancelButton={this.state.showsCancelButtonFlag}
