@@ -5,6 +5,7 @@ import {
   Dimensions,
   View
 } from 'react-native';
+import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
 import axios from 'axios';
 const { width } = Dimensions.get('window');
@@ -54,42 +55,21 @@ const Slide = props => {
     </View>
   )
 }
+@connect(state => {
+  return {
+    focus: state.recommend.focus
+  }
+}, 
+  dispatch => ({dispatch})
+)
 export default class MySwiper extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imgList: [],
       loadQueue: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     };
   }
   componentDidMount() {
-    var _self = this;
-    axios.get('http://127.0.0.1:3838/v8/fcg-bin/fcg_first_yqq.fcg', {
-      params: {
-        tpl:'v12',
-        page:'other',
-        rnd:0,
-        g_tk:new Date().getTime(),
-        loginUin:0,
-        hostUin:0,
-        inCharset:'utf8',
-        outCharset:'GB2312',
-        notice:0,
-        platform:'yqq',
-        needNewCode:0
-      }
-    })
-    .then(function (response) {
-      var MusicJsonCallback = (val) => {
-        _self.setState({
-          imgList: _self.fixHttp(val.data.focus)
-        })
-      }
-      eval(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
   }
   fixHttp(arr) {
     arr.map((item) => {
@@ -109,7 +89,7 @@ export default class MySwiper extends Component {
       <View>
           <Swiper loadMinimal loadMinimalSize={1} activeDotColor="#f6f6f6" style={styles.wrapper} height={150} loop={true}>
             {
-              this.state.imgList.map((item, i) => <Slide
+              this.props.focus.map((item, i) => <Slide
                 loadHandle={() => this.loadHandle(i)}
                 loaded={!!this.state.loadQueue[i]}
                 uri={item.pic}

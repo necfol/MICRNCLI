@@ -14,7 +14,7 @@ import { NavigationActions } from 'react-navigation';
 import SearchBar from 'react-native-search-bar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import axios from 'axios';
-import MySwiper from '../component/MySwiper.js';
+import Recommend from '../container/Recommend.js';
 import MyStatusBar from '../component/MyStatusBar.js'
 const styles = StyleSheet.create({
   container: {
@@ -59,7 +59,7 @@ export default class HomeScreen extends React.Component {
             showsCancelButton={this.state.showsCancelButtonFlag}
             />
           <ScrollableTabView tabBarUnderlineStyle={styles.tabStyle} tabBarActiveTextColor="#000" tabBarInactiveTextColor="#999">
-            <MySwiper tabLabel="推荐"></MySwiper>
+            <Recommend tabLabel="推荐"></Recommend>
             <View tabLabel="排行榜" style={{flex: 1, backgroundColor: 'red'}}></View>
           </ScrollableTabView>
         </ScrollView>

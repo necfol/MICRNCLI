@@ -6,7 +6,7 @@ import reducer, { initialNavState } from './reducer/index.js';
 const middlewares = [thunk];
 let md;
 if (__DEV__) {
-  md =  (
+  md = compose(
     applyMiddleware(...middlewares),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
