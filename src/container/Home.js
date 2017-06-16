@@ -12,6 +12,7 @@ import {
 import { Button } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import SearchBar from 'react-native-search-bar';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 import axios from 'axios';
 import MySwiper from '../component/MySwiper.js';
 import MyStatusBar from '../component/MyStatusBar.js'
@@ -19,6 +20,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f6f6f6'
+  },
+  tabStyle: {
+    backgroundColor: 'transparent'
   }
 })
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -54,7 +58,10 @@ export default class HomeScreen extends React.Component {
             onFocus={() => this._onFocus()}
             showsCancelButton={this.state.showsCancelButtonFlag}
             />
-          <MySwiper></MySwiper>
+          <ScrollableTabView tabBarUnderlineStyle={styles.tabStyle} tabBarActiveTextColor="#000" tabBarInactiveTextColor="#999">
+            <MySwiper tabLabel="推荐"></MySwiper>
+            <View tabLabel="排行榜" style={{flex: 1, backgroundColor: 'red'}}></View>
+          </ScrollableTabView>
         </ScrollView>
       </View>
     );

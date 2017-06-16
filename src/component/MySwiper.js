@@ -107,7 +107,7 @@ export default class MySwiper extends Component {
   render() {
     return (
       <View>
-          <Swiper loadMinimal loadMinimalSize={1} activeDotColor="#f6f6f6" style={styles.wrapper} height={160} loop={true}>
+          <Swiper loadMinimal loadMinimalSize={1} activeDotColor="#f6f6f6" style={styles.wrapper} height={150} loop={true}>
             {
               this.state.imgList.map((item, i) => <Slide
                 loadHandle={() => this.loadHandle(i)}
