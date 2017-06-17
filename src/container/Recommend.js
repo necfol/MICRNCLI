@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
 import { getrecommend } from '../action/recommend.js'
 import MySwiper from '../component/MySwiper.js';
+import SongList from './SongList.js';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   textView: {
@@ -42,6 +43,7 @@ export default class Recommend extends Component {
         <View style={styles.textView}>
             <Text>热门歌单</Text>
         </View>
+        <SongList></SongList>
       </View>
     );
   }
