@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
     fontView: {
         width: SCREEN_WIDTH / 2,
         alignItems: 'center',
-        justifyContent: 'center',
-
+        justifyContent: 'center'
     },
     fontStyle: {
         color: '#666',
@@ -45,10 +44,7 @@ export default class SongList extends Component {
         list: [1,1,1,1,1,1,1,1,1,1]
     }
   }
-  componentDidMount() {
-  }
   render() {
-
     return (
       <View>
           <View style={styles.view}>
