@@ -43,30 +43,27 @@ const styles = StyleSheet.create({
     }
 })
 @connect(state => ({
-    list: state.recommend.mvList
+    topList: state.rank.topList
 }), 
   dispatch => ({dispatch})
 )
-export default class MvList extends Component {
+export default class Rank extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    var { list } = this.props;
+    var { topList } = this.props;
     return (
       <View>
           <View style={styles.view}>
             {
-                list.map((item, index) => {
-                    item.picurl = item.picurl.replace(/http/i, 'https');
+                topList.map((item, index) => {
                     return (
-                        <View style={styles.imageView} key={item.mv_id}>
-                            <Image style={styles.image} source={{uri: item.picurl}}></Image>
+                        <View style={styles.imageView} key={item.id}>
+                            <Image style={styles.image} source={{uri: item.picUrl}}></Image>
                             <View style={styles.textView}>
-                                <Text numberOfLines={2} style={styles.fontText}>{item.mvtitle}</Text>
-                                <Text style={styles.fontText}>{item.singer_name}</Text>
-                                <Text style={styles.fontText}>发行时间:{item.pub_date}</Text>
-                                <Text style={styles.fontText}>播放量:{(item.listennum / 10000).toFixed(1)}万</Text>
+                                <Text numberOfLines={2} style={styles.fontText}>{item.topTitle}</Text>
+                                <Text style={styles.fontText}>{(item.listenCount / 10000).toFixed(1)}万</Text>
                             </View>
                         </View>
                     )

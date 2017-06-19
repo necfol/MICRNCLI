@@ -71,12 +71,6 @@ export default class MySwiper extends Component {
   }
   componentDidMount() {
   }
-  fixHttp(arr) {
-    arr.map((item) => {
-      item.pic = item.pic.replace(/http/i, 'https');
-    })
-    return arr
-  }
   loadHandle (i) {
     let loadQueue = this.state.loadQueue
     loadQueue[i] = 1

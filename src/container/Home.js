@@ -15,6 +15,7 @@ import SearchBar from 'react-native-search-bar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import axios from 'axios';
 import Recommend from '../container/Recommend.js';
+import Rank from '../container/Rank.js';
 import MyStatusBar from '../component/MyStatusBar.js'
 const styles = StyleSheet.create({
   container: {
@@ -60,7 +61,7 @@ export default class HomeScreen extends React.Component {
             />
           <ScrollableTabView tabBarUnderlineStyle={styles.tabStyle} tabBarActiveTextColor="#000" tabBarInactiveTextColor="#999">
             <Recommend tabLabel="推荐"></Recommend>
-            <View tabLabel="排行榜" style={{flex: 1, backgroundColor: 'red'}}></View>
+            <Rank tabLabel="排行榜"></Rank>
           </ScrollableTabView>
         </ScrollView>
       </View>
