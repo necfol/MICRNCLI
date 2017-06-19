@@ -12,6 +12,7 @@ import { Button } from 'react-native-elements';
 import { getrecommend } from '../action/recommend.js'
 import MySwiper from '../component/MySwiper.js';
 import SongList from './SongList.js';
+import MvList from './MvList.js';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   textView: {
@@ -44,6 +45,7 @@ export default class Recommend extends Component {
             <Text>热门歌单</Text>
         </View>
         <SongList></SongList>
+        <MvList></MvList>
       </View>
     );
   }

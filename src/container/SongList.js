@@ -54,7 +54,6 @@ export default class SongList extends Component {
   }
   render() {
     var { list } = this.props;
-    console.log(list);
     return (
       <View>
           <View style={styles.view}>
