@@ -34,30 +34,34 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start'
     }
 })
-@connect(state => (state), 
+@connect(state => ({
+    list: state.recommend.songList
+}), 
   dispatch => ({dispatch})
 )
 export default class SongList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-        list: [1,1,1,1,1,1,1,1,1,1]
-    }
   }
   render() {
+    var { list } = this.props;
+    console.log(list);
     return (
       <View>
           <View style={styles.view}>
             {
-                this.state.list.map((item, index) => (
-                    <View style={styles.imageView} key={index}>
-                        <Image resizeMode="contain" style={styles.image} source={{uri: 'https://p.qpic.cn/music_cover/2xmNaxibz1AbHy9icrXcAZ2rUy79DO1wLDcTqa4YZw7QPJG4FoMUjPOQ/300?n=1'}}></Image>
-                        <View style={styles.fontView}>
-                            <Text numberOfLines={1} style={styles.fontStyle}>如果老爸在追一次老妈如果老爸在追一次老妈如果老爸在追一次老妈如果老爸在追一次老妈</Text>
-                            <Text style={styles.nameFontStyle}>selena</Text>
+                list.map((item, index) => {
+                    item.imgurl = item.imgurl.replace(/http/i, 'https');
+                    return(
+                        <View style={styles.imageView} key={item.listennum}>
+                            <Image resizeMode="contain" style={styles.image} source={{uri: item.imgurl}}></Image>
+                            <View style={styles.fontView}>
+                                <Text numberOfLines={1} style={styles.fontStyle}>{item.dissname}</Text>
+                                <Text style={styles.nameFontStyle}>{item.author.trim()}</Text>
+                            </View>
                         </View>
-                    </View>
-                ))
+                    )
+                })
             }
           </View>
       </View>
