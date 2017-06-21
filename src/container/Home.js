@@ -47,6 +47,7 @@ export default class HomeScreen extends React.Component {
     this.setState({showsCancelButtonFlag: true});
   }
   changeTabFunc(cp) {
+    // todo
     console.log(cp)
   }
   render() {
