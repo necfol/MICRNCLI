@@ -84,7 +84,7 @@ export default class Rank extends Component {
                                     item.songList && item.songList.map((sitem, sindex) => {
                                         return (
                                             <View key={sindex}>
-                                                <Text>{sindex + 1}{sitem.songname}-{sitem.singername}</Text>
+                                                <Text numberOfLines={1}>{sindex + 1}.{sitem.songname}-<Text style={{color: '#666'}}>{sitem.singername}</Text></Text>
                                             </View>
                                         )
                                     })
