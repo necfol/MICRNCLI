@@ -46,6 +46,9 @@ export default class HomeScreen extends React.Component {
   _onFocus() {
     this.setState({showsCancelButtonFlag: true});
   }
+  changeTabFunc(cp) {
+    console.log(cp)
+  }
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -59,7 +62,7 @@ export default class HomeScreen extends React.Component {
             onFocus={() => this._onFocus()}
             showsCancelButton={this.state.showsCancelButtonFlag}
             />
-          <ScrollableTabView tabBarUnderlineStyle={styles.tabStyle} tabBarActiveTextColor="#000" tabBarInactiveTextColor="#999">
+          <ScrollableTabView onChangeTab={(cp) => this.changeTabFunc(cp)} tabBarUnderlineStyle={styles.tabStyle} tabBarActiveTextColor="#000" tabBarInactiveTextColor="#999">
             <Recommend tabLabel="推荐"></Recommend>
             <Rank tabLabel="排行榜"></Rank>
           </ScrollableTabView>
