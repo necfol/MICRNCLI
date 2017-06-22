@@ -17,6 +17,7 @@ import axios from 'axios';
 import Recommend from '../container/Recommend.js';
 import Rank from '../container/Rank.js';
 import MyStatusBar from '../component/MyStatusBar.js'
+import PlayBtnView from '../component/PlayBtnView.js'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -46,10 +47,6 @@ export default class HomeScreen extends React.Component {
   _onFocus() {
     this.setState({showsCancelButtonFlag: true});
   }
-  changeTabFunc(cp) {
-    // todo
-    console.log(cp)
-  }
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -63,11 +60,12 @@ export default class HomeScreen extends React.Component {
             onFocus={() => this._onFocus()}
             showsCancelButton={this.state.showsCancelButtonFlag}
             />
-          <ScrollableTabView onChangeTab={(cp) => this.changeTabFunc(cp)} tabBarUnderlineStyle={styles.tabStyle} tabBarActiveTextColor="#000" tabBarInactiveTextColor="#999">
-            <Recommend tabLabel="推荐"></Recommend>
-            <Rank tabLabel="排行榜"></Rank>
+          <ScrollableTabView tabBarUnderlineStyle={styles.tabStyle} tabBarActiveTextColor="#000" tabBarInactiveTextColor="#999">
+            <Recommend ref="recommend" tabLabel="推荐"></Recommend>
+            <Rank ref="rank" tabLabel="排行榜"></Rank>
           </ScrollableTabView>
         </ScrollView>
+        <PlayBtnView></PlayBtnView>
       </View>
     );
   }

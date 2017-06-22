@@ -12,7 +12,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
     view: {
         backgroundColor: '#ededed',
-        flex: 1
+        // flex: 1
     },
     imageView: {
         position: 'relative',
