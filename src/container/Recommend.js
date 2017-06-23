@@ -9,8 +9,6 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { getrecommend } from '../action/recommend.js'
-import { getrank } from '../action/rank.js'
 import MySwiper from '../component/MySwiper.js';
 import SongList from './SongList.js';
 import MvList from './MvList.js';
@@ -26,19 +24,11 @@ const styles = StyleSheet.create({
       color: '#333'
   }
 })
-@connect(state => (state), 
-  dispatch => ({
-      getrecommend: () => dispatch(getrecommend()),
-      getrank: () => dispatch(getrank()),
-  })
-)
 export default class Recommend extends Component {
   constructor(props) {
     super(props);
   }
   componentDidMount() {
-    this.props.getrecommend();
-    this.props.getrank();
   }
   render() {
     return (
