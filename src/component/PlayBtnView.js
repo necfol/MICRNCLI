@@ -14,32 +14,33 @@ export default class PlayBtnView extends Component {
     }
   }
   play() {
-    RNFetchBlob.fetch('GET', 'https://ws.stream.qqmusic.qq.com/104251904.m4a?fromtag=46', {
-        // Authorization : 'Bearer access-token...',
-        // more headers  ..
-      })
-      // when response status code is 200
-      .then((res) => {
-        console.log('=============')
-        // the conversion is done in native code
-        let base64Str = res.base64()
-        // the following conversions are done in js, it's SYNC
-        let text = res.text()
-        let json = res.json()
-        console.log(json)
-      })
-      // Status code is not 200
-      .catch((errorMessage, statusCode) => {
-        console.log('=============',errorMessage)
-        // error handling
-      })    
-    // var s = new Sound('/104251904.m4a?fromtag=46', 'http://ws.stream.qqmusic.qq.com', (e) => {
-    //   if (e) {
-    //     console.log(e);
-    //   } else {
-    //     s.play();
-    //   }
-    // });  
+    // RNFetchBlob.fetch('GET', 'https://dl.stream.qqmusic.qq.com/C400003H8aaX0ZmicJ.m4a?vkey=EFE8B976CD2B2D871FCA958F2F7B4768103AB8AA76AEA8F78A4BCAA3D3E89FDE076BB272705F05EE80557ACC9F4EF8490EF43F0C4293FDF0&guid=264167871&uin=791294471&fromtag=66', {
+    // // RNFetchBlob.fetch('GET', 'https://127.0.0.1:3839/104251904.m4a?fromtag=46', {
+    //     // Authorization : 'Bearer access-token...',
+    //     // more headers  ..
+    //   })
+    //   // when response status code is 200
+    //   .then((res) => {
+    //     console.log('=============')
+    //     // the conversion is done in native code
+    //     let base64Str = res.base64()
+    //     // the following conversions are done in js, it's SYNC
+    //     let text = res.text()
+    //     let json = res.json()
+    //     console.log(json)
+    //   })
+    //   // Status code is not 200
+    //   .catch((errorMessage, statusCode) => {
+    //     console.log('=============',errorMessage)
+    //     // error handling
+    //   })    
+    var s = new Sound('C400003H8aaX0ZmicJ.m4a?vkey=EFE8B976CD2B2D871FCA958F2F7B4768103AB8AA76AEA8F78A4BCAA3D3E89FDE076BB272705F05EE80557ACC9F4EF8490EF43F0C4293FDF0&guid=264167871&uin=791294471&fromtag=66', 'https://dl.stream.qqmusic.qq.com', (e) => {
+      if (e) {
+        console.log(e);
+      } else {
+        s.play();
+      }
+    });  
   }
   render() {
     return (
