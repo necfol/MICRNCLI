@@ -8,6 +8,7 @@ import {
   View
 } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation'
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const styles = StyleSheet.create({
     view: {
@@ -43,10 +44,16 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start'
     }
 })
+const navigateAction = NavigationActions.navigate({
+  routeName: 'Cd',
+  params: {},
+})
 @connect(state => ({
     list: state.recommend.songList
 }), 
-  dispatch => ({dispatch})
+  dispatch => ({
+    navGo: () => dispatch(navigateAction)
+  })
 )
 export default class SongList extends Component {
   constructor(props) {
@@ -54,6 +61,7 @@ export default class SongList extends Component {
   }
   render() {
     var { list } = this.props;
+    console.log(this.props)
     return (
       <View>
           <View style={styles.view}>
@@ -61,17 +69,20 @@ export default class SongList extends Component {
                 list.map((item, index) => {
                     item.imgurl = item.imgurl.replace(/http/i, 'https');
                     return(
-                        <View style={styles.imageView} key={item.dissid}>
-                            <Image resizeMode="contain" style={styles.image} source={{uri: item.imgurl}}></Image>
-                            <View style={styles.numView}>
-                                <Image style={{height: 15, width: 15}} resizeMode="contain" source={require('../assert/img/music.png')}></Image>
-                                <Text style={{backgroundColor: 'transparent', color: '#fff', marginLeft: 4}}>{(item.listennum / 10000).toFixed(1)}万</Text>
+                        <TouchableHighlight  key={item.dissid} onPress={() => {this.props.navGo()}}>
+                            <View style={styles.imageView}>
+                                <Image resizeMode="contain" style={styles.image} source={{uri: item.imgurl}}></Image>
+                                <View style={styles.numView}>
+                                    <Image style={{height: 15, width: 15}} resizeMode="contain" source={require('../assert/img/music.png')}></Image>
+                                    <Text style={{backgroundColor: 'transparent', color: '#fff', marginLeft: 4}}>{(item.listennum / 10000).toFixed(1)}万</Text>
+                                </View>
+                                <View style={styles.fontView}>
+                                    <Text numberOfLines={1} style={styles.fontStyle}>{item.dissname}</Text>
+                                    <Text style={styles.nameFontStyle}>{item.author.trim()}</Text>
+                                </View>
                             </View>
-                            <View style={styles.fontView}>
-                                <Text numberOfLines={1} style={styles.fontStyle}>{item.dissname}</Text>
-                                <Text style={styles.nameFontStyle}>{item.author.trim()}</Text>
-                            </View>
-                        </View>
+                        </TouchableHighlight>
+                        
                     )
                 })
             }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 import HomeScreen from './container/Home.js';
+import CdScreen from './container/Cd.js';
 import ChatScreen from './container/Chat.js';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
@@ -36,5 +37,12 @@ export const AppNavigator = StackNavigator({
   },
   Scan: {
     screen: packScan(QRCodeScanner)
+  },
+  Cd: {
+    screen: paramsToProps(CdScreen)
   }
-});
+},
+  {
+    mode: 'card',
+    headerMode: 'none'
+  });
