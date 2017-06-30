@@ -22,7 +22,6 @@ const packScan = (SomeComponent) => {
         title: `扫描`,
       });
       onSuccess() {
-        console.log('+++++++++++')
       }
       render() {
           return <SomeComponent onRead={() => this.onSuccess()}/>

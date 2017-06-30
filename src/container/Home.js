@@ -69,7 +69,6 @@ export default class HomeScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     let renderView;
-    console.log(this.props.visible)
     return (
       <View style={styles.container}>
         <MyStatusBar backgroundColor="#f6f6f6"/>
