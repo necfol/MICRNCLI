@@ -12,7 +12,7 @@ import { NavigationActions } from 'react-navigation'
 import LinearGradient from 'react-native-linear-gradient'
 import MyNav from '../component/MyNav.js'
 import MyStatusBar from '../component/MyStatusBar.js'
-// import { getcd } from '../action/cd.js'
+import { getcd } from '../action/cd.js'
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const navigateAction = NavigationActions.back({
     key: null
@@ -31,9 +31,9 @@ var styles = StyleSheet.create({
   }
 })
 @connect(state => ({state}), 
-        dispatch => ({
+        (dispatch, id) => ({
             navGo: () => dispatch(navigateAction),
-            // getCd: () => dispatch(getcd)
+            getCd: (id) => dispatch(getcd)
         })
 )
 export default class Cd extends Component {
@@ -49,6 +49,7 @@ export default class Cd extends Component {
         })
   }
   componentDidMount() {
+      this.props.getCd(this.props.id)
       console.log(this.props.id)
   }
   render() {

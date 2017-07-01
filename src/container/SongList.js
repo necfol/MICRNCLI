@@ -70,7 +70,7 @@ export default class SongList extends Component {
                 list.map((item, index) => {
                     item.imgurl = item.imgurl.replace(/http/i, 'https');
                     return(
-                        <TouchableHighlight  key={item.dissid} onPress={() => {this.props.navGo(1)}}>
+                        <TouchableHighlight key={item.dissid} onPress={() => {this.props.navGo(item.dissid)}}>
                             <View style={styles.imageView}>
                                 <Image resizeMode="contain" style={styles.image} source={{uri: item.imgurl}}></Image>
                                 <View style={styles.numView}>
